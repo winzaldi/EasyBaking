@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">EasyBaking</string>
+    <string name="title_banana">Banana Best Pancakes</string>
+    <string name="video_description">Video Description</string>
+    <string name="ingredient_example">Satu sendok makan gula</string>
+    <string name="measurement">1 CUP</string>
+    <string name="action_previous">Previous</string>
+    <string name="action_next">Next</string>
+    <string name="action_finish">Finish</string>
+    <string name="title_steps">Receip Steps</string>
+    <string name="title_description">Title Description</string>
+
+    <string name="appwidget_text">Easy Baking </string>
+    <string name="add_widget">Add widget</string>
+    <string name="quantity_measurement_format">%1$s %2$s</string>
+    <string name="widget_no_recipe">No recipe selected</string>
+    <string name="add_to_widget">Add to Widget</string>
+</resources>
