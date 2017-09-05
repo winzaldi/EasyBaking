@@ -66,9 +66,8 @@ public class DetailActivity extends AppCompatActivity {
             mDetailStepAdapter.setListOfSteps(baking.getSteps());
         }
 
-        /* reference -> https://stackoverflow.com/questions/9279111/determine-if-the-device-is-a-smartphone-or-tablet*/
-        boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
-        if (tabletSize) {
+
+        if (findViewById(R.id.item_detail_container)!=null) {
             mTwoPane = true;
         }
 

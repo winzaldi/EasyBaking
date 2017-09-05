@@ -36,6 +36,7 @@ public class ReceipStepActivity extends AppCompatActivity {
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(),listOfSteps,mPosition);
+        mPager.setOffscreenPageLimit(1);
         mPager.setAdapter(mPagerAdapter);
         if(mPosition>0)
             mPager.setCurrentItem(mPosition);

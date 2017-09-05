@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -97,8 +96,6 @@ public class ItemStepsFragment extends Fragment {
                         getContext(), userAgent), new DefaultExtractorsFactory(), null, null);
                 player.prepare(mediaSource);
                 player.setPlayWhenReady(true);
-            } else {
-                Toast.makeText(getContext(), "Video Not Available", Toast.LENGTH_LONG).show();
             }
 
         }

@@ -114,8 +114,8 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
     }
 
     private void showSnack(boolean isConnected) {
-        String message = "";
-        int color = Color.WHITE;
+        String message;
+        int color;
         if (!isConnected) {
             message = "Sorry! Not connected to internet";
             color = Color.WHITE;

@@ -2,9 +2,7 @@ package android.fastrack.udacity.easybaking.ui.detail;
 
 import android.content.Context;
 import android.fastrack.udacity.easybaking.R;
-import android.fastrack.udacity.easybaking.model.Baking;
 import android.fastrack.udacity.easybaking.model.Ingredients;
-import android.fastrack.udacity.easybaking.ui.main.BakingAdapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by winzaldi on 8/30/17.

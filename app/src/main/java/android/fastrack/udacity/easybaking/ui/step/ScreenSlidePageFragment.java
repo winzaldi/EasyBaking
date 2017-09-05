@@ -8,11 +8,11 @@ import android.fastrack.udacity.easybaking.model.Steps;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -116,15 +116,13 @@ public class ScreenSlidePageFragment extends Fragment {
             // Prepare the MediaSource.
             // Uri mediaUri = Uri.parse("file:///android_asset/dizzy.mp4"); //for development
             String strUlr = steps.getVideoURL();
-            if (strUlr.length() > 5) {
+            if (!TextUtils.isEmpty(strUlr) && strUlr.length() > 0) {
                 Uri mediaUri = Uri.parse(steps.getVideoURL());
                 String userAgent = Util.getUserAgent(getContext(), "BakingApp");
                 MediaSource mediaSource = new ExtractorMediaSource(mediaUri, new DefaultDataSourceFactory(
                         getContext(), userAgent), new DefaultExtractorsFactory(), null, null);
                 player.prepare(mediaSource);
                 player.setPlayWhenReady(true);
-            } else {
-                Toast.makeText(getContext(), "Video Not Available", Toast.LENGTH_LONG).show();
             }
 
         }
