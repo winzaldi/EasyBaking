@@ -48,9 +48,9 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_video__short_description"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:paddingRight="4dp"
+        android:layout_marginStart="@dimen/eightdp"
+        android:layout_marginLeft="@dimen/eightdp"
+        android:paddingRight="@dimen/fourdp"
         android:layout_gravity="center_vertical|right"
         tools:text="@string/video_description" />
 

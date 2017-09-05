@@ -14,12 +14,11 @@ import java.util.List;
 
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     private List<Steps> stepsList;
-    int mPosition ;
+    int mPosition;
     boolean firstFlag = false;
 
 
-
-    public ScreenSlidePagerAdapter(FragmentManager fm, List<Steps> stepsList,int position) {
+    public ScreenSlidePagerAdapter(FragmentManager fm, List<Steps> stepsList, int position) {
         super(fm);
         this.stepsList = stepsList;
         this.mPosition = position;
@@ -44,11 +43,10 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getItemPosition(Object object) {
         if (mPosition > 0)
-            return  mPosition;
+            return mPosition;
         return super.getItemPosition(object);
     }
 
-
-
+    
 
 }

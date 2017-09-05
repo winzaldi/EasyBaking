@@ -66,10 +66,11 @@ public class DetailActivity extends AppCompatActivity {
             mDetailStepAdapter.setListOfSteps(baking.getSteps());
         }
 
-        if(findViewById(R.id.item_detail_container)!=null){
+        /* reference -> https://stackoverflow.com/questions/9279111/determine-if-the-device-is-a-smartphone-or-tablet*/
+        boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
+        if (tabletSize) {
             mTwoPane = true;
         }
-
 
     }
 

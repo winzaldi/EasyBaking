@@ -1,7 +1,6 @@
 package android.fastrack.udacity.easybaking.ui.step;
 
 
-import android.annotation.SuppressLint;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.fastrack.udacity.easybaking.R;
@@ -38,8 +37,8 @@ public class ScreenSlidePageFragment extends Fragment {
     /**
      * The argument key for the page number this fragment represents.
      */
-    public static final String ARG_PAGE = "page";
-    public static final String ARG_STEP = "steps";
+    private static final String ARG_PAGE = "page";
+    private static final String ARG_STEP = "steps";
     private SimpleExoPlayer player;
 
 
@@ -117,14 +116,14 @@ public class ScreenSlidePageFragment extends Fragment {
             // Prepare the MediaSource.
             // Uri mediaUri = Uri.parse("file:///android_asset/dizzy.mp4"); //for development
             String strUlr = steps.getVideoURL();
-            if(strUlr.length() >  5){
+            if (strUlr.length() > 5) {
                 Uri mediaUri = Uri.parse(steps.getVideoURL());
                 String userAgent = Util.getUserAgent(getContext(), "BakingApp");
                 MediaSource mediaSource = new ExtractorMediaSource(mediaUri, new DefaultDataSourceFactory(
                         getContext(), userAgent), new DefaultExtractorsFactory(), null, null);
                 player.prepare(mediaSource);
                 player.setPlayWhenReady(true);
-            }else {
+            } else {
                 Toast.makeText(getContext(), "Video Not Available", Toast.LENGTH_LONG).show();
             }
 
@@ -145,7 +144,6 @@ public class ScreenSlidePageFragment extends Fragment {
         }
     }
 
-    @SuppressLint("InlinedApi")
     private void hideSystemUi() {
         Resources res = getResources();
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -198,6 +196,4 @@ public class ScreenSlidePageFragment extends Fragment {
             releasePlayer();
         }
     }
-
-
 }

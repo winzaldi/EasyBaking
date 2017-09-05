@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ import org.parceler.Parcels;
  * Created by winzaldi on 8/31/17.
  */
 
-public class ItemStepsFragment  extends Fragment {
+public class ItemStepsFragment extends Fragment {
 
 
 //    private TextView textView;
@@ -53,7 +54,7 @@ public class ItemStepsFragment  extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        steps = Parcels.unwrap(getArguments().getParcelable(BakingConstanta.KEY_STEPS_OBJECT)) ;
+        steps = Parcels.unwrap(getArguments().getParcelable(BakingConstanta.KEY_STEPS_OBJECT));
     }
 
     @Nullable
@@ -61,21 +62,22 @@ public class ItemStepsFragment  extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.receip_step, container, false);
 
-//        imageView = (ImageView)rootView.findViewById(R.id.img_content_step);
-//        imageView.setImageResource(R.drawable.sandwiches);
-//
-//        textView = (TextView)rootView.findViewById(R.id.tv_title_step);
-//        textView.setText(steps.getShortDescription());
+        /**  OLD CODE
+         *     imageView = (ImageView)rootView.findViewById(R.id.img_content_step);
+         imageView.setImageResource(R.drawable.sandwiches);
+         textView = (TextView)rootView.findViewById(R.id.tv_title_step);
+         textView.setText(steps.getShortDescription()); */
+
         playerView = (SimpleExoPlayerView) rootView.findViewById(R.id.video_player);
-        initializePlayer();
         TextView tvTitle = (TextView) rootView.findViewById(R.id.tv_video__short_description);
         tvTitle.setText(steps.getShortDescription());
         TextView tvDescription = (TextView) rootView.findViewById(R.id.tv_video_description);
         tvDescription.setText(steps.getDescription());
 
-        return  rootView;
+        return rootView;
 
     }
+
     private void initializePlayer() {
         if (player == null) {
             // Create an instance of the ExoPlayer.
@@ -88,14 +90,14 @@ public class ItemStepsFragment  extends Fragment {
             // Prepare the MediaSource.
             //Uri mediaUri = Uri.parse("file:///android_asset/dizzy.mp4"); // for development
             String strUlr = steps.getVideoURL();
-            if(strUlr.length() >  5){
+            if (!TextUtils.isEmpty(strUlr)) {
                 Uri mediaUri = Uri.parse(strUlr);
                 String userAgent = Util.getUserAgent(getContext(), "BakingApp");
                 MediaSource mediaSource = new ExtractorMediaSource(mediaUri, new DefaultDataSourceFactory(
                         getContext(), userAgent), new DefaultExtractorsFactory(), null, null);
                 player.prepare(mediaSource);
                 player.setPlayWhenReady(true);
-            }else {
+            } else {
                 Toast.makeText(getContext(), "Video Not Available", Toast.LENGTH_LONG).show();
             }
 
@@ -157,4 +159,12 @@ public class ItemStepsFragment  extends Fragment {
         }
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            initializePlayer();
+        }
+
+    }
 }

@@ -38,15 +38,16 @@ public class MainActivityScreenTest {
     @Test
     public void clickListReceip_OpensDetailActivity() {
 
-        // Uses {@link Espresso#onData(org.hamcrest.Matcher)} to get a reference to a specific
-        // listview item and clicks it.
-        //onData(anything()).inAdapterView(withId(R.id.item_list)).atPosition(1).perform(click());
         onView(withId(R.id.item_list)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
         // Checks that the DetailActivity opens with the correct receip name displayed
         onView(withId(R.id.tv_title_ingredient)).check(matches(withText(INGREDIENT_TITLE)));
 
+    }
 
+    @Test
+    public void mainActivity(){
+        onView(withId(R.id.item_list)).perform(RecyclerViewActions.scrollToPosition(2));
     }
 
     @Before

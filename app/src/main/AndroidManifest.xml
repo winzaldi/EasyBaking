@@ -7,6 +7,7 @@
 
 
     <application
+        android:name=".BakingApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,6 +17,7 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,10 +27,11 @@
         </activity>
         <activity
             android:name=".ui.detail.DetailActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.main.MainActivity"/>
-         </activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.main.MainActivity" />
+        </activity>
         <activity
             android:name=".ui.step.ReceipStepActivity"
             android:label="@string/title_steps"
@@ -47,7 +50,16 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/easy_baking_widget_provider_info" />
         </receiver>
-        <service android:name=".widget.EasyBakingWidgetRemoteViewService"
+        <receiver
+            android:name=".utils.ConnectivityReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".widget.EasyBakingWidgetRemoteViewService"
             android:enabled="true"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
